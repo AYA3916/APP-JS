@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Welcome</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     </head>
     <body>
         <img class="image-gradient" src="gradient.png" alt="gradient">
@@ -12,45 +13,95 @@
 
         <div class="container">
             <header>
-                <h1 class="logo">ExamZone</h1>
+                <h1 data-aos="fade-down" data-aos-duration="1500" class="logo">ExamZone</h1>
 
                 <nav>
-                    <a href="javascript:void(0)" id="btn-explore">Explore</a>
-                    <a href="javascript:void(0)" id="btn-about">What is ExamZone</a>
+                    <a data-aos="fade-down" data-aos-duration="1500" href="javascript:void(0)" id="btn-explore">Explore</a>
+                    <a data-aos="fade-down" data-aos-duration="2500" href="javascript:void(0)" id="btn-about">What is ExamZone</a>
                 </nav>
                 
-                <button class="btn-signin">SIGN IN</button>
+                <button data-aos="fade-down" data-aos-duration="1500" class="btn-signin">SIGN IN</button>
             </header>
              <main>
                 <div class="content">
-                    <div class="tag-box">
-                        <div class="tag">INTRUCING &wedbar;</div>
+                    <div data-aos="fade-zoom-in"
+                    data-aos-easing="ease-in-back"
+                    data-aos-delay="300"
+                    data-aos-offset="0" data-aos-duration="1500" class="tag-box">
+                    <div class="tag">INTRUCING &wedbar;</div>
                     </div>
 
-                    <h1>ExamZone for <br> grade hackers</h1>
+                    <h1 data-aos="fade-zoom-in"
+                    data-aos-easing="ease-in-back"
+                    data-aos-delay="300"
+                    data-aos-offset="0" data-aos-duration="2000" >ExamZone for <br> grade hackers</h1>
 
-                    <p class="description">ExamZone – Your smart space for online exams!<br>Take, create, and manage exams – all in one place.<br>Simple. Fast. Reliable</p>
+                    <p data-aos="fade-zoom-in"
+                    data-aos-easing="ease-in-back"
+                    data-aos-delay="300"
+                    data-aos-offset="0" data-aos-duration="2500" class="description">ExamZone – Your smart space for online exams!<br>Take, create, and manage exams – all in one place.<br>Simple. Fast. Reliable</p>
 
-                    <div class="buttons">
+                    <div data-aos="fade-zoom-in"
+                    data-aos-easing="ease-in-back"
+                    data-aos-delay="300"
+                    data-aos-offset="0" data-aos-duration="3000" class="buttons">
                         <a href="#" class="btn-get-started"> Get Started &gt;</a>  
                     </div>
 
                 </div>
              </main>
-             <spline-viewer class="robot-3d" url="https://prod.spline.design/sYpiiEZiLo9LVRBF/scene.splinecode"></spline-viewer>
+             <spline-viewer data-aos="fade-zoom-in"
+             data-aos-easing="ease-in-back"
+             data-aos-delay="300"
+             data-aos-offset="0" data-aos-duration="3000" class="robot-3d" url="https://prod.spline.design/sYpiiEZiLo9LVRBF/scene.splinecode"></spline-viewer>
         </div>
         <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
         <script>
-            document.getElementById("btn-explore").addEventListener("click", function() {
-                alert("Explore feature coming soon! 🚀");
-                // Or scroll, or open modal, or navigate somewhere
-            });
+            
+        </script>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+        <section id="features" class="features-section" data-aos="fade-up" data-aos-duration="2000">
+            <h2>Explore ExamZone</h2>
+            <div class="feature-grid">
+                <div class="feature-card">🧑‍🏫 Teacher Dashboard</div>
+                <div class="feature-card">🧑‍🎓 Student Dashboard</div>
+                <div class="feature-card">📝 Create Exams</div>
+                <div class="feature-card">📊 Automatic Grading</div>
+                <div class="feature-card">📍 Location-Based Security</div>
+                <div class="feature-card">⏱️ Timed Sessions</div>
+            </div>
+        </section>
         
-            document.getElementById("btn-about").addEventListener("click", function() {
-                alert("ExamZone is your smart exam platform 💡");
-                // You could redirect: window.location.href = "about.html";
-                // Or open a modal, etc.
-            });
+        <section id="about-examzone" class="about-section" data-aos="fade-up" data-aos-duration="2000">
+            <h2>What is ExamZone?</h2>
+            <p>
+                <strong>ExamZone</strong> is your smart and reliable platform for online exams. Whether you’re a student eager to take assessments or a teacher designing custom tests, ExamZone gives you all the tools you need:
+            </p>
+            <ul>
+                <li>🧑‍🏫 Create and organize exams easily</li>
+                <li>📝 Add multiple-choice and direct-answer questions</li>
+                <li>⏱️ Timed exams with automatic grading</li>
+                <li>🌍 Geolocation support and student tracking</li>
+                <li>⚡ Seamless and responsive interface for all devices</li>
+            </ul>
+            <p>Everything you need – fast, secure, and user-friendly. Welcome to the future of exams. Welcome to <strong>ExamZone</strong>.</p>
+        </section>
+        <script>
+            document.getElementById("btn-about").addEventListener("click", function () {
+    const aboutSection = document.getElementById("about-examzone");
+    aboutSection.scrollIntoView({ behavior: "smooth" });
+});
+
+        </script>
+        <script>
+            document.getElementById("btn-explore").addEventListener("click", function () {
+    const featureSection = document.getElementById("features");
+    featureSection.scrollIntoView({ behavior: "smooth" });
+});
+
         </script>
         
     </body>
