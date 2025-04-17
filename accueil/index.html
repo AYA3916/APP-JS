@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Welcome</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <img class="image-gradient" src="gradient.png" alt="gradient">
+        <div class="layer-blur"></div>
+
+        <div class="container">
+            <header>
+                <h1 class="logo">ExamZone</h1>
+
+                <nav>
+                    <a href="javascript:void(0)" id="btn-explore">Explore</a>
+                    <a href="javascript:void(0)" id="btn-about">What is ExamZone</a>
+                </nav>
+                
+                <button class="btn-signin">SIGN IN</button>
+            </header>
+             <main>
+                <div class="content">
+                    <div class="tag-box">
+                        <div class="tag">INTRUCING &wedbar;</div>
+                    </div>
+
+                    <h1>ExamZone for <br> grade hackers</h1>
+
+                    <p class="description">ExamZone – Your smart space for online exams!<br>Take, create, and manage exams – all in one place.<br>Simple. Fast. Reliable</p>
+
+                    <div class="buttons">
+                        <a href="#" class="btn-get-started"> Get Started &gt;</a>  
+                    </div>
+
+                </div>
+             </main>
+             <spline-viewer class="robot-3d" url="https://prod.spline.design/sYpiiEZiLo9LVRBF/scene.splinecode"></spline-viewer>
+        </div>
+        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
+        <script>
+            document.getElementById("btn-explore").addEventListener("click", function() {
+                alert("Explore feature coming soon! 🚀");
+                // Or scroll, or open modal, or navigate somewhere
+            });
+        
+            document.getElementById("btn-about").addEventListener("click", function() {
+                alert("ExamZone is your smart exam platform 💡");
+                // You could redirect: window.location.href = "about.html";
+                // Or open a modal, etc.
+            });
+        </script>
+        
+    </body>
+</html>
