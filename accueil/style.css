@@ -46,14 +46,13 @@ header{
     padding: 1rem 5rem;
     z-index: 10;
     position: relative;
+    margin-left: -3rem;
 }
 
-header h1{
-    margin: 0;
-    font-size: 3rem;
-    font-weight: 300;
+.logo {
+    width: 300px;
 }
-
+  
 nav{
     display: flex;
     align-items: center;
@@ -72,22 +71,6 @@ nav a{
 
 nav a:hover{
     color: #008432;
-}
-
-.btn-signin{
-    background-color: #a7a7a7;
-    color: black;
-    padding:  0.8rem 2rem;
-    border-radius: 50px;
-    border: none;
-    font-size: 1rem;
-    font-weight: 500;
-    transform: background-color 0.2s ease;
-    cursor: pointer;
-}
-
-.btn-signin:hover{
-    background-color: white;
 }
 
 main{
@@ -171,7 +154,7 @@ main{
 
 .btn-get-started:hover{
     background-color: #ffff;
-    color:black
+    color: #008432;
 }
 
 .robot-3d{
@@ -245,3 +228,124 @@ main{
         padding: 0.5rem 1.2rem;
     }
 }
+
+.about-section {
+    background-color: #1a1a1a;
+    padding: 4rem 10%;
+    color: #e7e7e7;
+    margin-top: 5rem;
+    margin-right: 5rem;
+    margin-left: 5rem;
+    margin-bottom: 5rem;
+    border-top: 2px solid #444;
+    border-radius: 25px;
+    box-shadow: 0 0 50px rgba(255,255,255,0.05);
+}
+
+.about-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #008432;
+}
+
+.about-section p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #ccc;
+}
+
+.about-section ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+}
+
+.about-section ul li {
+    padding: 0.3rem 0;
+    font-size: 1.1rem;
+}
+
+.features-section {
+    padding: 4rem 10%;
+    background-color: #1a1a1a;
+    color: #fff;
+    text-align: center;
+    border-top: 2px solid #444;
+    border-radius: 25px;
+    margin-top: 5rem;
+    margin-right: 5rem;
+    margin-bottom: 5rem;
+    margin-left: 5rem;
+}
+
+.features-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #008432;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background-color: #111;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: transform 0.1s ease, background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.feature-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    background-color: #222;
+    box-shadow: 0 0 20px rgba(0, 132, 50, 0.3);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .features-section {
+        padding: 3rem 5%;
+        margin: 3rem 1rem;
+    }
+}
+
+
+.loader {
+    overflow: visible;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35vh;
+    margin-right: 25vh;
+  }
+  
+  .logoo {
+    fill: none;
+    stroke-dasharray: 20px;
+    /*<-- Play with this number until it look cool */
+    stroke: rgb(1, 167, 56);
+    animation: load 15s infinite linear;
+  }
+  
+  @keyframes load {
+    0% {
+      stroke-dashoffset: 0px;
+    }
+  
+    100% {
+      stroke-dashoffset: 200px;
+    }
+  }
+  
