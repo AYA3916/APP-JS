@@ -1,0 +1,22 @@
+
+AOS.init();
+
+document.getElementById("btn-about").addEventListener("click", function () {
+    document.getElementById("about-examzone").scrollIntoView({ behavior: "smooth" });
+});
+
+document.getElementById("btn-explore").addEventListener("click", function () {
+    document.getElementById("features").scrollIntoView({ behavior: "smooth" });
+});
+
+
+        document.getElementById("btn-about").addEventListener("click", function () {
+const aboutSection = document.getElementById("about-examzone");
+aboutSection.scrollIntoView({ behavior: "smooth" });
+});
+
+
+        document.getElementById("btn-explore").addEventListener("click", function () {
+const featureSection = document.getElementById("features");
+featureSection.scrollIntoView({ behavior: "smooth" });
+});
