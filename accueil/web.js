@@ -6,7 +6,7 @@ window.addEventListener("load", () => {
   AOS.init();
 
   document.getElementById("btn-about").addEventListener("click", function () {
-      document.getElementById("about-examzone").scrollIntoView({ behavior: "smooth" });
+      document.getElementById("about-Testopia").scrollIntoView({ behavior: "smooth" });
   });
   
   document.getElementById("btn-explore").addEventListener("click", function () {
@@ -15,7 +15,7 @@ window.addEventListener("load", () => {
   
   
           document.getElementById("btn-about").addEventListener("click", function () {
-  const aboutSection = document.getElementById("about-examzone");
+  const aboutSection = document.getElementById("about-TesTopia");
   aboutSection.scrollIntoView({ behavior: "smooth" });
   });
   
