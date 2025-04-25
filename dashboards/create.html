@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Créer un examen | TesTopia</title>
+  <link rel="stylesheet" href="espace-prof.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Création d’un nouvel examen</h2>
+    <form id="examForm">
+
+      <label for="titre">Titre de l'examen :</label>
+      <input type="text" id="titre" required />
+
+      <label for="description">Description :</label>
+      <textarea id="description" required></textarea>
+
+      <label for="public">Public ciblé :</label>
+      <input type="text" id="public" placeholder="Ex : 2e année MIP, S4, groupe A" required />
+
+      <hr />
+
+      <button type="submit">Créer l’examen</button>
+    </form>
+
+    <div id="lienExamen" class="hidden">
+      <p><strong>Lien d’accès unique :</strong></p>
+      <input type="text" id="generatedLink" readonly />
+    </div>
+  </div>
+
+  <script src="espace-prof.js"></script>
+</body>
+</html>
