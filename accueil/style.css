@@ -224,73 +224,6 @@ main{
     margin-top: 3rem;
 }
 
-.robot-3d{
-    position: absolute;
-    top: 0;
-    right: -20%;
-}
-
-@media(max-width: 1300px){
-    header{
-        padding: 1rem 0.5rem;
-    }
-
-    .content{
-        margin-top: 85%;
-    }
-
-    .robot-3d{
-        scale: 0.8;
-        top: -20%;
-        right: 2%;
-    }
-}
-
-@media(max-width: 768px){
-    header{
-        padding: 1rem 0.1rem;
-    }
-
-    nav{
-        display: none;
-    }
-
-    header h1{
-        font-size: 2rem;
-    }
-
-    .btn-signin{
-        padding: 0.6rem 1.5rem;
-    }
-
-    .content{
-        margin-top: 25rem;
-    }
-
-    .robot-3d{
-        scale: 0.5;
-        top: -25%;
-        right: 0;
-    }
-    .content{
-        max-width: 30rem;
-        margin-left: 10%;
-    }
-
-    .tag-box{
-        width: 12rem;
-    }
-
-    .content h1{
-        font-size: 2.5rem;
-
-    }
-
-    .description{
-        font-size: 1rem;
-    }
-
-}
 
 .about-section {
     background-color: #1a1a1a;
@@ -308,7 +241,7 @@ main{
 .about-section h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: #008432;
+    color: blue;
 }
 
 .about-section p {
@@ -344,7 +277,7 @@ main{
 .features-section h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    color: #008432;
+    color: blue;
 }
 
 .feature-grid {
