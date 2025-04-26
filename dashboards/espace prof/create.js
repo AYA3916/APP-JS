@@ -7,7 +7,7 @@ const form = document.getElementById("examForm");
 const linkContainer = document.getElementById("lienExamen");
 const generatedLinkInput = document.getElementById("generatedLink");
 
-// Afficher le bon champ selon le type sélectionné
+
 typeSelect.addEventListener("change", () => {
   if (typeSelect.value === "directe") {
     reponseDirecteContainer.classList.remove("hidden");
@@ -21,7 +21,7 @@ typeSelect.addEventListener("change", () => {
   }
 });
 
-// Ajouter une proposition
+
 addPropositionBtn.addEventListener("click", () => {
   const div = document.createElement("div");
   div.innerHTML = `
@@ -31,7 +31,7 @@ addPropositionBtn.addEventListener("click", () => {
   propositionsDiv.appendChild(div);
 });
 
-// Enregistrement de l'examen
+
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
