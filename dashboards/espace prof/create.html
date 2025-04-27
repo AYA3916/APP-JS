@@ -22,8 +22,6 @@
 
       <hr />
 
-      <h3>Ajouter une question</h3>
-
       <label for="typeQuestion">Type de question :</label>
       <select id="typeQuestion" required>
         <option value="">-- Choisir un type --</option>
@@ -46,8 +44,16 @@
       <input type="number" id="duree" placeholder="Durée (secondes)" required />
       <input type="number" id="points" placeholder="Points" required />
 
-      <hr />
-      <button type="submit">Créer l’examen</button>
+      
+      <div id="preview" class="mt-3"></div>
+      <input type="file" id="examFile" accept="image/*,video/*,.pdf,.doc,.docx">
+<div id="questions-container"></div>
+
+<div>
+  <button type="button" id="btn-ajouter-question" class="btn btn-secondary">Ajouter une question</button>   
+<button type="submit">Créer l’examen</button></div>
+
+<hr />
     </form>
 
     <div id="lienExamen" class="hidden">

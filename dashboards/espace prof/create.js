@@ -98,3 +98,200 @@ form.addEventListener("submit", function (e) {
   localStorage.setItem("dernierExamenCree", JSON.stringify(examen));
   alert("Examen enregistré avec succès !");
 });
+
+document.getElementById('examFile').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  const preview = document.getElementById('preview');
+  preview.innerHTML = ''; // Vider l'ancien aperçu
+
+  if (!file) return;
+
+  const fileType = file.type;
+
+  if (fileType.startsWith('image/')) {
+    // Afficher une image
+    const img = document.createElement('img');
+    img.src = URL.createObjectURL(file);
+    img.className = 'img-fluid mt-2'; // Bootstrap pour image responsive
+    img.style.maxHeight = '300px'; // Limiter hauteur
+    preview.appendChild(img);
+  } else if (fileType === 'application/pdf') {
+    // Afficher un aperçu de PDF
+    const iframe = document.createElement('iframe');
+    iframe.src = URL.createObjectURL(file);
+    iframe.width = '100%';
+    iframe.height = '400px';
+    iframe.className = 'mt-2';
+    preview.appendChild(iframe);
+  } else if (fileType.startsWith('video/')) {
+    // Afficher une vidéo
+    const video = document.createElement('video');
+    video.src = URL.createObjectURL(file);
+    video.controls = true;
+    video.width = 400;
+    video.className = 'mt-2';
+    preview.appendChild(video);
+  } else {
+    // Fichiers non reconnus : afficher un lien de téléchargement
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(file);
+    link.textContent = 'Voir le fichier sélectionné';
+    link.target = '_blank';
+    link.className = 'btn btn-info mt-2';
+    preview.appendChild(link);
+  }
+});
+
+const addQuestionBtn = document.getElementById("btn-ajouter-question");
+const questionsContainer = document.getElementById("questions-container");
+
+// Ajout d'une question
+addQuestionBtn.addEventListener("click", () => {
+  const questionDiv = document.createElement("div");
+  questionDiv.classList.add("question");
+  // Ajouter un label pour "Type de question"
+  const typeLabel = document.createElement("label");
+  typeLabel.textContent = "Type de question :";
+  questionDiv.appendChild(typeLabel); 
+
+  // Créer un champ pour sélectionner le type de question
+  const typeSelect = document.createElement("select");
+  const option1 = document.createElement("option");
+  option1.textContent = "-- Choisir un type --";
+  const option2 = document.createElement("option");
+  option2.textContent = "Question directe";
+  const option3 = document.createElement("option");
+  option3.textContent = "QCM";
+  typeSelect.appendChild(option1);
+  typeSelect.appendChild(option2);
+  typeSelect.appendChild(option3);
+  questionDiv.appendChild(typeSelect);
+
+  // Créer un champ pour l'énoncé de la question
+  const enonceInput = document.createElement("textarea");
+  enonceInput.placeholder = "Énoncé de la question";
+  questionDiv.appendChild(enonceInput);
+
+  // Créer des champs pour la durée et les points
+  const durationInput = document.createElement("input");
+  durationInput.type = "number";
+  durationInput.placeholder = "Durée (en minutes)";
+  questionDiv.appendChild(durationInput);
+
+  const pointsInput = document.createElement("input");
+  pointsInput.type = "number";
+  pointsInput.placeholder = "Points";
+  questionDiv.appendChild(pointsInput);
+
+  // Créer le conteneur de la réponse directe, caché par défaut
+  const reponseDirecteContainer = document.createElement("div");
+  reponseDirecteContainer.classList.add("hidden");
+  const reponseDirecteInput = document.createElement("input");
+  reponseDirecteInput.type = "text";
+  reponseDirecteInput.placeholder = "Bonne réponse";
+  reponseDirecteContainer.appendChild(reponseDirecteInput);
+  questionDiv.appendChild(reponseDirecteContainer);
+
+  // Créer le conteneur de propositions, caché par défaut
+  const propositionsContainer = document.createElement("div");
+  propositionsContainer.classList.add("hidden");
+  const propositionsDiv = document.createElement("div");
+  propositionsContainer.appendChild(propositionsDiv);
+  const addPropositionBtn = document.createElement("button");
+  addPropositionBtn.textContent = "Ajouter une proposition";
+  propositionsContainer.appendChild(addPropositionBtn);
+  questionDiv.appendChild(propositionsContainer);
+
+  // Créer un champ pour uploader un fichier (image, vidéo, PDF, doc)
+  const fileInput = document.createElement("input");
+  fileInput.type = "file";
+  fileInput.accept = "image/*,video/*,.pdf,.doc,.docx";
+  questionDiv.appendChild(fileInput);
+
+  // Lorsque le type de question est changé
+  typeSelect.addEventListener("change", () => {
+    if (typeSelect.value === "Question directe") {
+      reponseDirecteContainer.classList.remove("hidden");
+      propositionsContainer.classList.add("hidden");
+    } else if (typeSelect.value === "QCM") {
+      reponseDirecteContainer.classList.add("hidden");
+      propositionsContainer.classList.remove("hidden");
+    } else {
+      reponseDirecteContainer.classList.add("hidden");
+      propositionsContainer.classList.add("hidden");
+    }
+  });
+
+  // Ajouter une proposition dans la section QCM
+  addPropositionBtn.addEventListener("click", () => {
+    const div = document.createElement("div");
+    div.innerHTML = ` 
+      <input type="text" placeholder="Proposition" />
+      <label><input type="checkbox" /> Correcte</label>
+    `;
+    propositionsDiv.appendChild(div);
+  });
+
+  // Ajouter la question au conteneur
+  questionsContainer.appendChild(questionDiv);
+
+  // Ajouter la question avec réponse à la liste des questions
+  addQuestionButton.addEventListener("click", () => {
+    const questionText = enonceInput.value.trim();
+    const duration = durationInput.value.trim();
+    const points = pointsInput.value.trim();
+    let question;
+
+    if (typeSelect.value === "Question directe") {
+      const reponse = reponseDirecteInput.value.trim();
+      if (!reponse) {
+        alert("Veuillez saisir la bonne réponse.");
+        return;
+      }
+      if (!duration || !points) {
+        alert("Veuillez saisir la durée et les points.");
+        return;
+      }
+      question = { type: "directe", enonce: questionText, reponse, duration, points };
+    } else if (typeSelect.value === "QCM") {
+      const propositions = [];
+      let auMoinsUneCorrecte = false;
+
+      document.querySelectorAll(`#propositionsContainer div`).forEach(div => {
+        const texte = div.querySelector('input[type="text"]').value.trim();
+        const correcte = div.querySelector('input[type="checkbox"]').checked;
+        if (texte !== '') {
+          propositions.push({ texte, correcte });
+          if (correcte) auMoinsUneCorrecte = true;
+        }
+      });
+
+      if (propositions.length === 0) {
+        alert("Ajoutez au moins une proposition.");
+        return;
+      }
+
+      if (!auMoinsUneCorrecte) {
+        alert("Une proposition correcte est requise.");
+        return;
+      }
+
+      if (!duration || !points) {
+        alert("Veuillez saisir la durée et les points.");
+        return;
+      }
+
+      question = { type: "qcm", enonce: questionText, propositions, duration, points };
+    }
+
+    if (question) {
+      // Ajouter la question à la liste des questions
+      const questionDivSummary = document.createElement("div");
+      questionDivSummary.innerHTML = `<p><strong>Énoncé :</strong> ${questionText} <br> <strong>Durée :</strong> ${duration} minutes <br> <strong>Points :</strong> ${points}</p>`;
+      questionsContainer.appendChild(questionDivSummary);
+
+      // Après avoir ajouté la question, faire défiler la page vers le bas
+      questionDivSummary.scrollIntoView({ behavior: "smooth", block: "end" });
+    }
+  });
+});
