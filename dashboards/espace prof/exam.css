@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f6f8;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 2rem;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #2a5298;
+  }
+  
+  .examens-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .examen-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .examen-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .examen-card h2 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: #1a3e7a;
+  }
+  
+  .examen-card p {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+  }
+  
+  .examen-card a {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #1a73e8;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.2s ease;
+  }
+  
+  .examen-card a:hover {
+    background-color: #0c56c2;
+  }
+  
