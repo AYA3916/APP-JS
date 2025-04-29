@@ -345,6 +345,7 @@ main{
     font-size: 2.5rem;
     margin-bottom: 2rem;
     color: #008432;
+
 }
 
 .feature-grid {
@@ -355,6 +356,8 @@ main{
 
 .feature-card {
     background-color: #111;
+    text-align: center;
+    justify-content: center;
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
