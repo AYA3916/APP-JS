@@ -7,6 +7,9 @@ const form = document.getElementById("examForm");
 const linkContainer = document.getElementById("lienExamen");
 const generatedLinkInput = document.getElementById("generatedLink");
 
+// Sélection des champs "filière" et "semestre"
+const filiereSelect = document.getElementById("filiere");
+const semestreSelect = document.getElementById("semestre");
 
 typeSelect.addEventListener("change", () => {
   if (typeSelect.value === "directe") {
@@ -21,7 +24,6 @@ typeSelect.addEventListener("change", () => {
   }
 });
 
-
 addPropositionBtn.addEventListener("click", () => {
   const div = document.createElement("div");
   div.innerHTML = `
@@ -30,7 +32,6 @@ addPropositionBtn.addEventListener("click", () => {
   `;
   propositionsDiv.appendChild(div);
 });
-
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -42,6 +43,10 @@ form.addEventListener("submit", function (e) {
   const enonce = document.getElementById("enonce").value.trim();
   const duree = parseInt(document.getElementById("duree").value);
   const points = parseInt(document.getElementById("points").value);
+
+  // Récupérer les valeurs de la filière et du semestre
+  const filiere = filiereSelect.value;
+  const semestre = semestreSelect.value;
 
   let question;
 
@@ -91,6 +96,8 @@ form.addEventListener("submit", function (e) {
     titre,
     description,
     public: publicCible,
+    filiere, // Ajout de la filière
+    semestre, // Ajout du semestre
     lien,
     questions: [question]
   };
@@ -222,76 +229,6 @@ addQuestionBtn.addEventListener("click", () => {
     }
   });
 
-  // Ajouter une proposition dans la section QCM
-  addPropositionBtn.addEventListener("click", () => {
-    const div = document.createElement("div");
-    div.innerHTML = ` 
-      <input type="text" placeholder="Proposition" />
-      <label><input type="checkbox" /> Correcte</label>
-    `;
-    propositionsDiv.appendChild(div);
-  });
-
-  // Ajouter la question au conteneur
+  // Ajouter la question au conteneur de questions
   questionsContainer.appendChild(questionDiv);
-
-  // Ajouter la question avec réponse à la liste des questions
-  addQuestionButton.addEventListener("click", () => {
-    const questionText = enonceInput.value.trim();
-    const duration = durationInput.value.trim();
-    const points = pointsInput.value.trim();
-    let question;
-
-    if (typeSelect.value === "Question directe") {
-      const reponse = reponseDirecteInput.value.trim();
-      if (!reponse) {
-        alert("Veuillez saisir la bonne réponse.");
-        return;
-      }
-      if (!duration || !points) {
-        alert("Veuillez saisir la durée et les points.");
-        return;
-      }
-      question = { type: "directe", enonce: questionText, reponse, duration, points };
-    } else if (typeSelect.value === "QCM") {
-      const propositions = [];
-      let auMoinsUneCorrecte = false;
-
-      document.querySelectorAll(`#propositionsContainer div`).forEach(div => {
-        const texte = div.querySelector('input[type="text"]').value.trim();
-        const correcte = div.querySelector('input[type="checkbox"]').checked;
-        if (texte !== '') {
-          propositions.push({ texte, correcte });
-          if (correcte) auMoinsUneCorrecte = true;
-        }
-      });
-
-      if (propositions.length === 0) {
-        alert("Ajoutez au moins une proposition.");
-        return;
-      }
-
-      if (!auMoinsUneCorrecte) {
-        alert("Une proposition correcte est requise.");
-        return;
-      }
-
-      if (!duration || !points) {
-        alert("Veuillez saisir la durée et les points.");
-        return;
-      }
-
-      question = { type: "qcm", enonce: questionText, propositions, duration, points };
-    }
-
-    if (question) {
-      // Ajouter la question à la liste des questions
-      const questionDivSummary = document.createElement("div");
-      questionDivSummary.innerHTML = `<p><strong>Énoncé :</strong> ${questionText} <br> <strong>Durée :</strong> ${duration} minutes <br> <strong>Points :</strong> ${points}</p>`;
-      questionsContainer.appendChild(questionDivSummary);
-
-      // Après avoir ajouté la question, faire défiler la page vers le bas
-      questionDivSummary.scrollIntoView({ behavior: "smooth", block: "end" });
-    }
-  });
 });
