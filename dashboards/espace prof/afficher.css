@@ -67,20 +67,3 @@ body {
   .exam-card button:hover {
     opacity: 0.8;
   }
-  
-  .edit-btn {
-    background-color: #4caf50;
-  }
-  
-  .delete-btn {
-    background-color: #f44336;
-  }
-  
-  .edit-btn:hover {
-    background-color: #45a049;
-  }
-  
-  .delete-btn:hover {
-    background-color: #e53935;
-  }
-  

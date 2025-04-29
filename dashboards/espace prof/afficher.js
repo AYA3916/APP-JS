@@ -4,6 +4,7 @@ let exams = JSON.parse(localStorage.getItem('exams')) || [
     { id: 2, titre: "Examen Mathématiques 1", filiere: "maths", semestre: "semestre1" },
     { id: 3, titre: "Examen Informatique 2", filiere: "informatique", semestre: "semestre2" },
   ];
+    
   
   // Fonction pour sauvegarder les examens dans localStorage
   function saveExams() {
@@ -26,10 +27,10 @@ let exams = JSON.parse(localStorage.getItem('exams')) || [
           <p>Filière: ${exam.filiere}</p>
           <p>Semestre: ${exam.semestre}</p>
           <button class="edit-btn" onclick="editExam(${exam.id})">
-            <i class="fas fa-edit"></i> Modifier
+            <i class="fas fa-edit"></i>
           </button>
           <button class="delete-btn" onclick="deleteExam(${exam.id})">
-            <i class="fas fa-trash"></i> Supprimer
+            <i class="fas fa-trash"></i>
           </button>
         `;
         examsContainer.appendChild(examCard);
