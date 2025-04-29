@@ -46,9 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     addPropBtn.addEventListener("click", () => {
       const propDiv = document.createElement("div");
+      propDiv.classList.add("proposition");
       propDiv.innerHTML = `
-        <input type="text" placeholder="Proposition" />
-        <label><input type="checkbox" /> Correcte</label>
+        <input type="text" class="prop-text" placeholder="Proposition" />
+        <label><input type="checkbox" class="prop-correct" /> Correcte</label>
       `;
       propositionsDiv.appendChild(propDiv);
     });
@@ -75,7 +76,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-  
+
+    // ✅ Vérifier qu’au moins une question a été ajoutée
+    const questionElements = document.querySelectorAll(".question");
+    if (questionElements.length === 0) {
+      alert("Veuillez ajouter au moins une question avant de créer l'examen.");
+      return;
+    }
+
     const examen = {
       titre: document.getElementById("titre").value,
       description: document.getElementById("description").value,
@@ -83,46 +91,47 @@ document.addEventListener("DOMContentLoaded", function () {
       semestre: document.getElementById("semestre").value,
       questions: [],
     };
-  
-    document.querySelectorAll(".question").forEach((questionDiv) => {
+
+    questionElements.forEach((questionDiv) => {
       const type = questionDiv.querySelector("select").value;
       const enonce = questionDiv.querySelector("textarea").value;
       const inputs = questionDiv.querySelectorAll("input[type='number']");
-      const duration = inputs[0].value;
-      const points = inputs[1].value;
-  
+      const duration = inputs[0]?.value || 0;
+      const points = inputs[1]?.value || 0;
+
       let question = { type, enonce, duration, points };
-  
+
       if (type === "directe") {
-        question.reponse = questionDiv.querySelector("input[type='text']").value;
+        const reponse = questionDiv.querySelector("input[type='text']").value;
+        question.reponse = reponse;
       } else if (type === "qcm") {
         const propositions = [];
-        questionDiv.querySelectorAll("div > div input[type='text']").forEach((input, index) => {
-          const checkbox = input.parentElement.querySelector("input[type='checkbox']");
+        questionDiv.querySelectorAll(".proposition").forEach((propDiv) => {
+          const text = propDiv.querySelector(".prop-text").value;
+          const correct = propDiv.querySelector(".prop-correct").checked;
           propositions.push({
-            proposition: input.value,
-            correcte: checkbox.checked,
+            proposition: text,
+            correcte: correct,
           });
         });
         question.propositions = propositions;
       }
-  
+
       examen.questions.push(question);
     });
-  
-    // Enregistrement
+
+    // ✅ Enregistrement
     const idUnique = "examen_" + Date.now();
     localStorage.setItem(idUnique, JSON.stringify(examen));
-  
-    // Générer le lien d'accès fictif
+
+    // ✅ Générer le lien d'accès fictif
     const lien = `${window.location.origin}/exam_etudiant.html?id=${idUnique}`;
     const lienInput = document.getElementById("generatedLink");
     lienInput.value = lien;
-  
-    // Afficher le lien
+
+    // ✅ Afficher le lien
     document.getElementById("lienExamen").classList.remove("hidden");
-  
+
     alert("Examen enregistré avec succès !");
   });
-  
 });
