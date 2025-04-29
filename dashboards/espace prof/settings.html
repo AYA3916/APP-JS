@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Settings - TesTopia</title>
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Account's Settings</h2>
+
+    <div class="settings-section">
+      <h3>Change password</h3>
+      <form id="passwordForm">
+        <input type="password" id="currentPassword" placeholder="current Password" required>
+        <input type="password" id="newPassword" placeholder="New password" required>
+        <input type="password" id="confirmPassword" placeholder="Confirm the new password" required>
+        <button type="submit">Update</button>
+      </form>
+      <p id="passwordMessage"></p>
+    </div>
+
+    <hr>
+
+    <div class="settings-section">
+      <h3>Edit profil</h3>
+      <form id="profileForm">
+        <input type="text" id="name" placeholder="Full name" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <button type="submit">Save</button>
+      </form>
+      <p id="profileMessage"></p>
+    </div>
+  </div>
+
+  <script src="settings.js"></script>
+</body>
+</html>
