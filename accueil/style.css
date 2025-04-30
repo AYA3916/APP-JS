@@ -277,7 +277,12 @@ main{
 .features-section h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
+<<<<<<< HEAD
     color: blue;
+=======
+    color: #008432;
+
+>>>>>>> 261f676ce66981465e672e4c26cef465abbdecf4
 }
 
 .feature-grid {
@@ -288,6 +293,8 @@ main{
 
 .feature-card {
     background-color: #111;
+    text-align: center;
+    justify-content: center;
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);

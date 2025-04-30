@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Créer un examen | TesTopia</title>
+  <link rel="stylesheet" href="create.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h2>Création d’un nouvel examen</h2>
+    <form id="examForm">
+      <label for="titre">Titre de l'examen :</label>
+      <input type="text" id="titre" required />
+
+      <label for="description">Description :</label>
+      <textarea id="description" required></textarea>
+
+      <hr />
+
+      <label for="filiere">Filière :</label>
+      <select id="filiere" required>
+        <option value="">Choisir une filière</option>
+        <option value="informatique">Informatique</option>
+        <option value="maths">Mathématiques</option>
+      </select>
+
+      <label for="semestre">Semestre :</label>
+      <select id="semestre" required>
+        <option value="">Choisir un semestre</option>
+        <option value="semestre1">Semestre 1</option>
+        <option value="semestre2">Semestre 2</option>
+        <option value="semestre3">Semestre 3</option>
+        <option value="semestre4">Semestre 4</option>
+        <option value="semestre5">Semestre 5</option>
+        <option value="semestre6">Semestre 6</option>
+      </select>
+
+      <hr />
+
+      <div id="questions-container"></div>
+
+      <button type="button" id="btn-ajouter-question" class="btn btn-secondary">Ajouter une question</button>
+      <button type="submit">Créer l’examen</button>
+    </form>
+
+    <div id="lienExamen" class="hidden">
+      <p><strong>Lien d’accès unique :</strong></p>
+      <input type="text" id="generatedLink" readonly />
+    </div>
+  </div>
+
+  <script src="create.js"></script>
+</body>
+</html>

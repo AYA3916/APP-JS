@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Settings - TesTopia</title>
+  <link rel="stylesheet" href="settings.css">
+  <!-- Ajouter FontAwesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Account's Settings</h2>
+
+    <!-- Change password section with icon -->
+    <div class="settings-section">
+      <h3><i class="fas fa-key"></i> Change password</h3>
+      <form id="passwordForm">
+        <input type="password" id="currentPassword" placeholder="Current Password" required>
+        <input type="password" id="newPassword" placeholder="New password" required>
+        <input type="password" id="confirmPassword" placeholder="Confirm the new password" required>
+        <button type="submit">Update</button>
+      </form>
+      <p id="passwordMessage"></p>
+    </div>
+
+    <hr>
+
+    <!-- Edit profile section with icon -->
+    <div class="settings-section">
+      <h3><i class="fas fa-user-cog"></i> Edit profile</h3>
+      <form id="profileForm">
+        <input type="text" id="name" placeholder="Full name" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <button type="submit">Save</button>
+      </form>
+      <p id="profileMessage"></p>
+    </div>
+
+    <hr>
+
+    <!-- Change language section with icon -->
+    <div class="settings-section">
+      <h3><i class="fas fa-globe"></i> Change language</h3>
+      <form id="languageForm">
+        <select id="languageSelect">
+          <option value="fr">Français</option>
+          <option value="en">English</option>
+          <option value="es">Español</option>
+        </select>
+        <button type="submit">Change Language</button>
+      </form>
+      <p id="languageMessage"></p>
+    </div>
+
+    <hr>
+
+    <!-- Privacy settings section with icon -->
+    <div class="settings-section">
+      <h3><i class="fas fa-shield-alt"></i> Privacy settings</h3>
+      <form id="privacyForm">
+        <label for="dataSharing">Share my data with third parties:</label>
+        <input type="checkbox" id="dataSharing">
+        <button type="submit">Save Privacy Settings</button>
+      </form>
+      <p id="privacyMessage"></p>
+    </div>
+  </div>
+
+  <script src="settings.js"></script>
+</body>
+</html>
