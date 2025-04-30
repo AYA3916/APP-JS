@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("examForm");
   const addQuestionBtn = document.getElementById("btn-ajouter-question");
   const questionsContainer = document.getElementById("questions-container");
+  const lienExamenDiv = document.getElementById("lienExamen");
+  const generatedLinkInput = document.getElementById("generatedLink");
 
   addQuestionBtn.addEventListener("click", () => {
     const questionDiv = document.createElement("div");
@@ -120,18 +122,23 @@ document.addEventListener("DOMContentLoaded", function () {
       examen.questions.push(question);
     });
 
-    // ✅ Enregistrement
-    const idUnique = "examen_" + Date.now();
+    // ✅ Enregistrement de l'examen
+    const idUnique = "examen_" + Date.now(); // Créer un ID unique
     localStorage.setItem(idUnique, JSON.stringify(examen));
 
-    // ✅ Générer le lien d'accès fictif
-    const lien = `${window.location.origin}/exam_etudiant.html?id=${idUnique}`;
-    const lienInput = document.getElementById("generatedLink");
-    lienInput.value = lien;
+    // ✅ Générer un lien d'accès unique
+    const examenLink = `${window.location.origin}/exam_etudiant.html?id=${idUnique}`;
+    generatedLinkInput.value = examenLink;  // Afficher le lien généré
 
-    // ✅ Afficher le lien
-    document.getElementById("lienExamen").classList.remove("hidden");
+    // ✅ Afficher le lien et le rendre visible
+    lienExamenDiv.classList.remove("hidden");
 
-    alert("Examen enregistré avec succès !");
+    // ✅ Afficher un message de confirmation
+    alert("Examen créé avec succès !");
+
+    // ✅ Rediriger vers la page des examens créés après un délai
+    setTimeout(() => {
+      window.location.href = "exam.html"; // Remplace par le chemin de la page qui affiche les examens créés
+    }, 10000);  // Attendre 2 secondes avant la redirection
   });
 });
