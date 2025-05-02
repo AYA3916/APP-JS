@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem(idUnique, JSON.stringify(examen));
 
     // ✅ Générer un lien d'accès unique
-    const examenLink = `${window.location.origin}/exam_etudiant.html?id=${idUnique}`;
+    const examenLink = `${window.location.origin}/afiexam.html?id=${idUnique}`;
     generatedLinkInput.value = examenLink;  // Afficher le lien généré
 
     // ✅ Afficher le lien et le rendre visible
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // ✅ Rediriger vers la page des examens créés après un délai
     setTimeout(() => {
-      window.location.href = "exam.html"; // Remplace par le chemin de la page qui affiche les examens créés
+      window.location.href = "affich.html"; // Remplace par le chemin de la page qui affiche les examens créés
     }, 10000);  // Attendre 2 secondes avant la redirection
   });
 });
