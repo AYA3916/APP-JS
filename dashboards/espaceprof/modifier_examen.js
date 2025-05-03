@@ -108,6 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     localStorage.setItem(examId, JSON.stringify(updatedExam));
     alert("Modifications enregistrées !");
-    window.location.href = "exam.html";
+    window.location.href = "affich.html";
   });
 });

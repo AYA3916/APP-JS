@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Résultats Examen</title>
+  <link rel="stylesheet" href="resultats.css" />
+</head>
+<body>
+  <div class="result-container">
+    <h1>Résultats de l'examen</h1>
+    <div id="score">Score : ... / 100</div>
+
+    <div id="bonnes-reponses">
+      <h2>Réponses correctes</h2>
+      <div class="liste"></div>
+    </div>
+
+    <div id="mauvaises-reponses">
+      <h2>Réponses incorrectes</h2>
+      <div class="liste"></div>
+    </div>
+  </div>
+  <div id="badge-reussite" class="hidden">
+    🎉 Félicitations ! Vous avez réussi l'examen !
+  </div>
+
+  <div id="badge-echec" class="hidden">
+    ❌ Vous n'avez pas atteint la moyenne. Courage pour la prochaine fois !
+  </div>
+  
+
+  <script src="resultats.js"></script>
+</body>
+</html>
