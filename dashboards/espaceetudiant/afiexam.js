@@ -115,3 +115,4 @@ function validerReponse() {
     window.location.href = "resultats.html";
   }
 }
+
