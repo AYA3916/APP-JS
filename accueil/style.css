@@ -97,8 +97,8 @@ body{
 
 .image-gradient{
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 240px;
+    right: 230px;
     opacity: 1.5;
     z-index: -1;
 }
@@ -198,9 +198,6 @@ main{
     transition: 0.1s ease;
 }
 
-.tag-box .tag:hover{
-    color: #008432;
-}
 
 .content h1{
     font-size: 4rem;
@@ -319,3 +316,7 @@ main{
     }
 }
 
+.liens{
+    text-decoration: none;
+    color: white;
+}
