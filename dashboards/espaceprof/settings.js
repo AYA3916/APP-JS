@@ -1,3 +1,9 @@
+const sidebarContainer = document.querySelector(".sidebar-container");
+const detailsBtn = document.querySelector(".sidebar-container .details-btn");
+
+detailsBtn.addEventListener("click", () => {
+  sidebarContainer.classList.toggle("active");
+});
 // Change password handler
 document.getElementById("passwordForm").addEventListener("submit", function (e) {
   e.preventDefault();

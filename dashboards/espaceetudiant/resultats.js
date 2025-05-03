@@ -1,3 +1,10 @@
+const sidebarContainer = document.querySelector(".sidebar-container");
+const detailsBtn = document.querySelector(".sidebar-container .details-btn");
+
+detailsBtn.addEventListener("click", () => {
+  sidebarContainer.classList.toggle("active");
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     const scoreEl = document.getElementById("score");
     const bonnesListe = document.querySelector("#bonnes-reponses .liste");
