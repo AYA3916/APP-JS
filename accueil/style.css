@@ -14,8 +14,8 @@ body{
 
 .image-gradient{
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 260px;
+    right: 240px;
     opacity: 1.5;
     z-index: -1;
 }
@@ -319,6 +319,7 @@ main{
     }
 }
 
+<<<<<<< Updated upstream
 
 .loader {
     overflow: visible;
@@ -349,3 +350,9 @@ main{
     }
   }
   
+=======
+.liens{
+    text-decoration: none;
+    color: white;
+}
+>>>>>>> Stashed changes
