@@ -1,12 +1,14 @@
+// Gérer l'ouverture/fermeture de la sidebar
 const sidebarContainer = document.querySelector(".sidebar-container");
 const detailsBtn = document.querySelector(".sidebar-container .details-btn");
 
 detailsBtn.addEventListener("click", () => {
   sidebarContainer.classList.toggle("active");
 });
+
+// Charger et afficher les examens
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("examens-container");
-
   let examsFound = false;
 
   for (let i = 0; i < localStorage.length; i++) {
@@ -18,19 +20,44 @@ document.addEventListener("DOMContentLoaded", () => {
       const card = document.createElement("div");
       card.className = "examen-card";
 
-      // Contenu principal
+      const lienAcces = `${window.location.origin}/exam_etudiant.html?id=${key}`;
+
+      // Contenu HTML de la carte
       card.innerHTML = `
         <h2>${examen.titre}</h2>
         <p><strong>Description :</strong> ${examen.description}</p>
         <p><strong>Filière :</strong> ${examen.filiere}</p>
         <p><strong>Semestre :</strong> ${examen.semestre}</p>
         <p><strong>Questions :</strong> ${examen.questions.length}</p>
-        <a href="exam_etudiant.html?id=${key}">Lien d’accès</a>
+        <p><strong>Lien d’accès :</strong> 
+          <a href="${lienAcces}" target="_blank">${lienAcces}</a>
+          <button class="copy-btn" style="margin-left: 10px;">📋 Copier le lien</button>
+        </p>
       `;
+
+      // 👉 Gérer le clic sur le bouton "Copier"
+      const copyBtn = card.querySelector(".copy-btn");
+      copyBtn.addEventListener("click", () => {
+        navigator.clipboard.writeText(lienAcces).then(() => {
+          copyBtn.textContent = "✅ Copié !";
+          setTimeout(() => {
+            copyBtn.textContent = "📋 Copier";
+          }, 2000);
+        }).catch(() => {
+          alert("Erreur lors de la copie du lien");
+        });
+      });
 
       // 👉 Boutons Modifier / Supprimer
       const buttonsDiv = document.createElement("div");
       buttonsDiv.className = "exam-buttons";
+
+      const editBtn = document.createElement("button");
+      editBtn.textContent = "✏️ Modifier";
+      editBtn.className = "edit-btn";
+      editBtn.addEventListener("click", () => {
+        window.location.href = `modifier_examen.html?id=${key}`;
+      });
 
       const deleteBtn = document.createElement("button");
       deleteBtn.textContent = "🗑️ Supprimer";
@@ -45,18 +72,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
-      const editBtn = document.createElement("button");
-      editBtn.textContent = "✏️ Modifier";
-      editBtn.className = "edit-btn";
-      editBtn.addEventListener("click", () => {
-        window.location.href = `modifier_examen.html?id=${key}`;
-      });
-
       buttonsDiv.appendChild(editBtn);
       buttonsDiv.appendChild(deleteBtn);
       card.appendChild(buttonsDiv);
 
-      // Ajouter la carte au conteneur
       container.appendChild(card);
     }
   }

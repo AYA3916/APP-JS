@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem(idUnique, JSON.stringify(examen));
 
     // ✅ Générer un lien d'accès unique
-    const examenLink = `${window.location.origin}/afiexam.html?id=${idUnique}`;
+    const examenLink = `${window.location.origin}../dashboards/espaceetudiant/afiexam.html?id=${idUnique}`;
     generatedLinkInput.value = examenLink;  // Afficher le lien généré
 
     // ✅ Afficher le lien et le rendre visible
