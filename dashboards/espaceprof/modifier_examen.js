@@ -1,119 +1,150 @@
-const sidebarContainer = document.querySelector(".sidebar-container");
-const detailsBtn = document.querySelector(".sidebar-container .details-btn");
+const params = new URLSearchParams(window.location.search);
+const examId = params.get("id");
+const examen = JSON.parse(localStorage.getItem(examId));
 
-detailsBtn.addEventListener("click", () => {
-  sidebarContainer.classList.toggle("active");
-});
-document.addEventListener("DOMContentLoaded", () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const examId = urlParams.get("id");
+document.getElementById("titre").value = examen.titre;
+document.getElementById("description").value = examen.description;
+document.getElementById("filiere").value = examen.filiere;
+document.getElementById("semestre").value = examen.semestre;
 
-  const exam = JSON.parse(localStorage.getItem(examId));
+const questionsContainer = document.getElementById("questions-container");
 
-  if (!exam) {
-    alert("Examen introuvable !");
-    window.location.href = "exam.html";
-    return;
-  }
+function createQuestionElement(question) {
+  const div = document.createElement("div");
+  div.className = "question-block";
 
-  // Remplir les champs
-  document.getElementById("titre").value = exam.titre;
-  document.getElementById("description").value = exam.description;
-  document.getElementById("filiere").value = exam.filiere;
-  document.getElementById("semestre").value = exam.semestre;
+  div.innerHTML = `
+    <label>Type :</label>
+    <select class="type">
+      <option value="directe" ${question.type === "directe" ? "selected" : ""}>Directe</option>
+      <option value="qcm" ${question.type === "qcm" ? "selected" : ""}>QCM</option>
+    </select>
 
-  const questionsContainer = document.getElementById("questions-container");
+    <label>Énoncé :</label>
+    <textarea class="enonce" required>${question.enonce}</textarea>
 
-  function createQuestionElement(question, index) {
-    const div = document.createElement("div");
-    div.className = "question-block";
-    div.innerHTML = `
-      <h4>Question ${index + 1}</h4>
-      <label>Type :</label>
-      <select class="type">
-        <option value="directe" ${question.type === "directe" ? "selected" : ""}>Directe</option>
-        <option value="qcm" ${question.type === "qcm" ? "selected" : ""}>QCM</option>
-      </select>
+    <div class="propositions-section" style="display: ${question.type === "qcm" ? "block" : "none"};">
+      <label>Propositions :</label>
+      <div class="propositions-list"></div>
+      <button type="button" class="btn-ajouter-proposition">+ Ajouter une proposition</button>
+    </div>
 
-      <label>Énoncé :</label>
-      <input type="text" class="texte" value="${question.texte}" required />
+    <label>Note :</label>
+    <input type="number" class="note" value="${question.note}" required>
 
-      <label>Propositions (séparées par ;) :</label>
-      <input type="text" class="propositions" value="${(question.propositions || []).join(';')}" ${question.type === "qcm" ? "" : "disabled"} />
+    <label>Tolérance :</label>
+    <input type="number" class="tolerance" value="${question.tolerance}" required>
 
-      <label>Bonne réponse :</label>
-      <input type="text" class="bonne_reponse" value="${question.bonne_reponse}" required />
+    <label>Durée (secondes) :</label>
+    <input type="number" class="duree" value="${question.duree}" required>
 
-      <label>Note :</label>
-      <input type="number" class="note" value="${question.note}" min="0" required />
+    <button type="button" class="supprimer-question">Supprimer</button>
+    <hr />
+  `;
 
-      <label>Tolérance :</label>
-      <input type="number" class="tolerance" value="${question.tolerance}" min="0" required />
+  const propositionsSection = div.querySelector(".propositions-section");
+  const propositionsList = div.querySelector(".propositions-list");
+  const btnAjouterProp = div.querySelector(".btn-ajouter-proposition");
 
-      <label>Durée (secondes) :</label>
-      <input type="number" class="duree" value="${question.duree}" min="10" required />
-
-      <button type="button" class="btn-supprimer">Supprimer</button>
-      <hr />
+  // Fonction d'ajout de proposition (QCM)
+  function ajouterProposition(val = "", estBonne = false) {
+    const propDiv = document.createElement("div");
+    propDiv.className = "proposition-item";
+    propDiv.innerHTML = `
+      <input type="checkbox" class="case-bonne" ${estBonne ? "checked" : ""} />
+      <input type="text" class="proposition" value="${val}" required />
+      <button type="button" class="btn-supprimer-prop">Supprimer</button>
     `;
-
-    // Événement type → activer/désactiver propositions
-    div.querySelector(".type").addEventListener("change", (e) => {
-      const propInput = div.querySelector(".propositions");
-      propInput.disabled = e.target.value !== "qcm";
+    propDiv.querySelector(".btn-supprimer-prop").addEventListener("click", () => {
+      propDiv.remove();
     });
-
-    // Supprimer question
-    div.querySelector(".btn-supprimer").addEventListener("click", () => {
-      div.remove();
-    });
-
-    questionsContainer.appendChild(div);
+    propositionsList.appendChild(propDiv);
   }
 
-  // Charger les questions existantes
-  exam.questions.forEach((q, index) => createQuestionElement(q, index));
-
-  // Ajouter une nouvelle question
-  document.getElementById("btn-ajouter-question").addEventListener("click", () => {
-    createQuestionElement({
-      type: "directe",
-      texte: "",
-      propositions: [],
-      bonne_reponse: "",
-      note: 1,
-      tolerance: 0,
-      duree: 60
-    }, document.querySelectorAll(".question-block").length);
-  });
-
-  // Enregistrer les modifications
-  document.getElementById("examForm").addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const questions = [];
-    document.querySelectorAll(".question-block").forEach(block => {
-      const type = block.querySelector(".type").value;
-      const texte = block.querySelector(".texte").value;
-      const propositions = block.querySelector(".propositions").value.split(";").map(p => p.trim()).filter(p => p !== "");
-      const bonne_reponse = block.querySelector(".bonne_reponse").value;
-      const note = parseFloat(block.querySelector(".note").value);
-      const tolerance = parseFloat(block.querySelector(".tolerance").value);
-      const duree = parseInt(block.querySelector(".duree").value);
-
-      questions.push({ type, texte, propositions: type === "qcm" ? propositions : [], bonne_reponse, note, tolerance, duree });
+  // Chargement des propositions existantes (QCM)
+  if (question.type === "qcm") {
+    (question.propositions || []).forEach(p => {
+      ajouterProposition(p, p === question.bonneReponse);
     });
+  }
 
-    const updatedExam = {
-      titre: document.getElementById("titre").value,
-      description: document.getElementById("description").value,
-      filiere: document.getElementById("filiere").value,
-      semestre: document.getElementById("semestre").value,
-      questions
-    };
+  btnAjouterProp.addEventListener("click", () => ajouterProposition());
 
-    localStorage.setItem(examId, JSON.stringify(updatedExam));
-    alert("Modifications enregistrées !");
-    window.location.href = "affich.html";
+  const selectType = div.querySelector(".type");
+  selectType.addEventListener("change", () => {
+    const isQCM = selectType.value === "qcm";
+    propositionsSection.style.display = isQCM ? "block" : "none";
   });
+
+  div.querySelector(".supprimer-question").addEventListener("click", () => {
+    div.remove();
+  });
+
+  questionsContainer.appendChild(div);
+}
+
+examen.questions.forEach(q => createQuestionElement(q));
+
+document.getElementById("ajouter-question").addEventListener("click", () => {
+  createQuestionElement({
+    type: "directe",
+    enonce: "",
+    propositions: [],
+    bonneReponse: "",
+    note: 0,
+    tolerance: 0,
+    duree: 30,
+  });
+});
+
+document.getElementById("form-modifier").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const updatedExam = {
+    id: examId,
+    titre: document.getElementById("titre").value,
+    description: document.getElementById("description").value,
+    filiere: document.getElementById("filiere").value,
+    semestre: document.getElementById("semestre").value,
+    questions: [],
+  };
+
+  document.querySelectorAll(".question-block").forEach(block => {
+    const type = block.querySelector(".type").value;
+    const enonce = block.querySelector(".enonce").value;
+    const note = parseFloat(block.querySelector(".note").value);
+    const tolerance = parseFloat(block.querySelector(".tolerance").value);
+    const duree = parseInt(block.querySelector(".duree").value);
+
+    let propositions = [];
+    let bonneReponse = "";
+
+    if (type === "qcm") {
+      const inputs = block.querySelectorAll(".proposition-item");
+      inputs.forEach(item => {
+        const text = item.querySelector(".proposition").value.trim();
+        const estBonne = item.querySelector(".case-bonne").checked;
+        if (text !== "") {
+          propositions.push(text);
+          if (estBonne) bonneReponse = text;
+        }
+      });
+    } else {
+      bonneReponse = block.querySelector(".bonne-reponse")?.value?.trim() || "";
+    }
+
+    updatedExam.questions.push({
+      type,
+      enonce,
+      propositions,
+      bonneReponse,
+      note,
+      tolerance,
+      duree,
+    });
+  });
+
+  localStorage.setItem(examId, JSON.stringify(updatedExam));
+  alert("Examen mis à jour !");
+  window.location.href = "examens_prof.html";
 });
