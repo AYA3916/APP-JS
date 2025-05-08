@@ -1,4 +1,87 @@
-*{
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #262626;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+  
+  .preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .loader-circle-9 {
+    width: 70px;
+    height: 70px;
+    background: transparent;
+    border: 3px solid #3c3c3c;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 70px;
+    font-family: sans-serif;
+    font-size: 12px;
+    color: white;
+    text-transform: uppercase;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+  }
+  
+  .loader-circle-9:before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: 100%;
+    height: 100%;
+    border: 3px solid transparent;
+    border-top: 3px solid blue;
+    border-right: 3px solid blue;
+    border-radius: 50%;
+    animation: animateC 2s linear infinite;
+  }
+  
+  .loader-circle-9 span {
+    display: block;
+    position: absolute;
+    top: calc(50% - 2px);
+    left: 50%;
+    width: 50%;
+    height: 4px;
+    background: transparent;
+    transform-origin: left;
+    animation: animate 2s linear infinite;
+  }
+  
+  .loader-circle-9 span:before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: blue;
+    top: -6px;
+    right: -8px;
+    box-shadow: 0 0 20px blue;
+  }
+  
+  @keyframes animateC {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  @keyframes animate {
+    0% { transform: rotate(45deg); }
+    100% { transform: rotate(405deg); }
+  }
+
+  *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -6,7 +89,7 @@
 
 body{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: black;
+    background-color: #000;
     color: #e7e7e7;
     min-height: 100vh;
     line-height: 1.5;
@@ -14,8 +97,11 @@ body{
 
 .image-gradient{
     position: absolute;
-    top: 260px;
-    right: 240px;
+
+
+    top: 240px;
+    right: 230px;
+
     opacity: 1.5;
     z-index: -1;
 }
@@ -115,9 +201,6 @@ main{
     transition: 0.1s ease;
 }
 
-.tag-box .tag:hover{
-    color: #008432;
-}
 
 .content h1{
     font-size: 4rem;
@@ -140,94 +223,7 @@ main{
     gap: 1rem;
     margin-top: 3rem;
 }
-.btn-get-started{
-    color: white;
-    text-decoration: none;
-    border: 1px solid #ffff;
-    padding: 0.7rem 1.2rem;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    transition: background-color 0.2s ease;
-}
 
-.btn-get-started:hover{
-    background-color: #ffff;
-    color: #008432;
-}
-
-.robot-3d{
-    position: absolute;
-    top: 0;
-    right: -20%;
-}
-
-@media(max-width: 1300px){
-    header{
-        padding: 1rem 0.5rem;
-    }
-
-    .content{
-        margin-top: 85%;
-    }
-
-    .robot-3d{
-        scale: 0.8;
-        top: -20%;
-        right: 2%;
-    }
-}
-
-@media(max-width: 768px){
-    header{
-        padding: 1rem 0.1rem;
-    }
-
-    nav{
-        display: none;
-    }
-
-    header h1{
-        font-size: 2rem;
-    }
-
-    .btn-signin{
-        padding: 0.6rem 1.5rem;
-    }
-
-    .content{
-        margin-top: 25rem;
-    }
-
-    .robot-3d{
-        scale: 0.5;
-        top: -25%;
-        right: 0;
-    }
-    .content{
-        max-width: 30rem;
-        margin-left: 10%;
-    }
-
-    .tag-box{
-        width: 12rem;
-    }
-
-    .content h1{
-        font-size: 2.5rem;
-
-    }
-
-    .description{
-        font-size: 1rem;
-    }
-
-    .btn-get-started{
-        font-size: 0.8rem;
-        padding: 0.5rem 1.2rem;
-    }
-}
 
 .about-section {
     background-color: #1a1a1a;
@@ -245,7 +241,7 @@ main{
 .about-section h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: #008432;
+    color: blue;
 }
 
 .about-section p {
@@ -281,7 +277,9 @@ main{
 .features-section h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
+    color: blue;
     color: #008432;
+    color: blue;
 }
 
 .feature-grid {
@@ -292,6 +290,8 @@ main{
 
 .feature-card {
     background-color: #111;
+    text-align: center;
+    justify-content: center;
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
@@ -319,7 +319,6 @@ main{
     }
 }
 
-<<<<<<< Updated upstream
 
 .loader {
     overflow: visible;
@@ -350,9 +349,15 @@ main{
     }
   }
   
-=======
+
 .liens{
     text-decoration: none;
     color: white;
 }
->>>>>>> Stashed changes
+
+
+.liens{
+    text-decoration: none;
+    color: white;
+}
+

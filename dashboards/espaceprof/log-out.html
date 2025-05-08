@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log out - TesTopia</title>
+  <link rel="stylesheet" href="log-out.css">
+  <!-- Ajouter FontAwesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="body">
+  <div class="sidebar-container">
+    <div class="details-btn">
+      <i class="fas fa-angle-right"></i>
+    </div>
+
+    <div class="menu-items">
+      <a href="affich.html" class="menu-item">
+        <i class="fas fa-home"></i>
+        <span class="details">Home</span>
+      </a>
+
+      <a href="create.html" class="menu-item">
+        <i class="fas fa-plus-square"></i>
+        <span class="details">Create</span>
+      </a>
+
+      <a href="settings.html" class="menu-item">
+        <i class="fas fa-cog"></i>
+        <span class="details">Settings</span>
+      </a>
+      
+      <a href="log-out.html" id="logoutBtn" class="menu-item">
+        <i class="fas fa-right-from-bracket"></i>
+        <span class="details">Log out</span>
+      </a>
+    </div>
+  </div>
+  <div class="container">
+    <h1>Welcome to TesTopia</h1>
+    <p>Are you ready to log out?</p>
+    
+    <a href="#" id="logoutBtn" class="logout-btn">
+      <i class="fas fa-right-from-bracket"></i>
+      <span class="details">Log out</span>
+    </a>
+
+    <!-- Section de confirmation de déconnexion -->
+    <div id="confirmationMessage" class="confirmation-message">
+      <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
+      <button id="confirmLogout" class="confirm-btn">Oui, se déconnecter</button>
+      <button id="cancelLogout" class="cancel-btn">Annuler</button>
+    </div>
+  </div>
+
+  <script src="log-out.js"></script>
+</body>
+</html>

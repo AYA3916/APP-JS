@@ -1,0 +1,183 @@
+.body {
+  margin: 0;
+}
+
+.sidebar-container {
+  background: #000;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 80px;
+  box-shadow: 4px 0 24px -8px rgba(0, 0, 0, 0.7);
+  transition: all 500ms ease;
+}
+
+.sidebar-container.active {
+  width: 200px;
+}
+
+.sidebar-container .details-btn i {
+  transition: all 300ms ease;
+}
+
+.sidebar-container.active .details-btn i {
+  transform: rotateZ(180deg);
+}
+
+.sidebar-container i {
+  color: #eee;
+  font-size: 30px;
+}
+
+.sidebar-container .menu-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  gap: 42px;
+}
+
+.sidebar-container .menu-item {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  padding: 6px 16px;
+  transition: all 300ms ease;
+}
+
+.sidebar-container.active .menu-item:hover {
+  background: #0f1d25;
+}
+
+.sidebar-container .menu-item .details {
+  margin-left: 24px;
+  font-size: 18px;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 300ms ease;
+}
+
+.sidebar-container.active .menu-item .details {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sidebar-container.active .menu-item .details:hover {
+transform:scale(1.2);
+}
+
+.sidebar-container .menu-item i {
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 300ms ease;
+}
+
+.sidebar-container .menu-item i:hover {
+  transform: scale(1.2);
+  background: #0f1d25;
+}
+
+.sidebar-container .details-btn {
+  position: absolute;
+  right: -10px;
+  top: 24px;
+  background: #2a9d8f;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 300ms ease;
+
+  animation: detailsAnimation 500ms infinite alternate;
+}
+
+@keyframes detailsAnimation {
+  100% {
+    transform: translateX(4px);
+  }
+}
+
+.sidebar-container .details-btn i {
+  font-size: 20px;
+}
+
+/* General settings styling */
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: #f2f2f2;
+  margin: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  color: #2a9d8f;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+h3 {
+  color: #2a9d8f;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+}
+
+h3 i {
+  margin-right: 10px; /* Espacement entre l'icône et le texte */
+  font-size: 1.3em;  /* Taille des icônes */
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: #2a9d8f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #21867a;
+}
+
+p {
+  margin-top: 10px;
+  font-size: 0.95em;
+  color: #2a9d8f;
+}
+
