@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Résultats Examen</title>
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+  integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+  <link rel="stylesheet" href="resultats.css" />
+</head>
+<body class="body">
+  <div class="sidebar-container">
+    <div class="details-btn">
+      <i class="fas fa-angle-right"></i>
+    </div>
+
+    <div class="menu-items">
+      <a href="afiexam.html" class="menu-item">
+        <i class="fas fa-home"></i>
+        <span class="details">Home</span>
+      </a>
+
+      <a href="resultats.html" class="menu-item">
+        <i class="fas fa-poll"></i>
+        <span class="details">Results</span>
+      </a>
+
+      <a href="setting.html" class="menu-item">
+        <i class="fas fa-cog"></i>
+        <span class="details">Settings</span>
+      </a>
+
+      <a href="logout.html" class="menu-item">
+        <i class="fas fa-right-from-bracket"></i>
+        <span class="details">Log out</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <h1>Bienvenue dans votre espace</h1>
+    <p>Les examens disponibles s’afficheront ici.</p>
+  </div>
+  <div class="result-container">
+    <h1>Résultats de l'examen</h1>
+    <div id="score">Score : ... / 100</div>
+
+    <div id="bonnes-reponses">
+      <h2>Réponses correctes</h2>
+      <div class="liste"></div>
+    </div>
+
+    <div id="mauvaises-reponses">
+      <h2>Réponses incorrectes</h2>
+      <div class="liste"></div>
+    </div>
+  </div>
+  <div id="badge-reussite" class="hidden">
+    🎉 Félicitations ! Vous avez réussi l'examen !
+  </div>
+
+  <div id="badge-echec" class="hidden">
+    ❌ Vous n'avez pas atteint la moyenne. Courage pour la prochaine fois !
+  </div>
+  
+
+  <script src="resultats.js"></script>
+</body>
+</html>
