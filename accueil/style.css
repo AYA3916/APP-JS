@@ -97,8 +97,11 @@ body{
 
 .image-gradient{
     position: absolute;
+
+
     top: 240px;
     right: 230px;
+
     opacity: 1.5;
     z-index: -1;
 }
@@ -316,7 +319,45 @@ main{
     }
 }
 
+
+.loader {
+    overflow: visible;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35vh;
+    margin-right: 25vh;
+  }
+  
+  .logoo {
+    fill: none;
+    stroke-dasharray: 20px;
+    /*<-- Play with this number until it look cool */
+    stroke: rgb(1, 167, 56);
+    animation: load 15s infinite linear;
+  }
+  
+  @keyframes load {
+    0% {
+      stroke-dashoffset: 0px;
+    }
+  
+    100% {
+      stroke-dashoffset: 200px;
+    }
+  }
+  
+
 .liens{
     text-decoration: none;
     color: white;
 }
+
+
+.liens{
+    text-decoration: none;
+    color: white;
+}
+
