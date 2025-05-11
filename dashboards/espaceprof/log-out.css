@@ -128,7 +128,7 @@ body {
   }
   
   h1 {
-    color: #2a9d8f;
+    color: blue;
     margin-bottom: 20px;
   }
   
@@ -143,7 +143,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #2a9d8f;
+    background-color: blue;
     color: white;
     padding: 12px 30px;
     border-radius: 6px;
@@ -158,7 +158,7 @@ body {
   }
   
   .logout-btn:hover {
-    background-color: #21867a;
+    background-color: blue;
     transform: scale(1.1);
   }
   
@@ -182,7 +182,7 @@ body {
   }
   
   .confirmation-message p {
-    color: #2a9d8f;
+    color: blue;
     font-size: 1.1em;
   }
   
@@ -198,7 +198,7 @@ body {
   }
   
   .confirm-btn {
-    background-color: #2a9d8f;
+    background-color: blue;
     color: white;
   }
   
@@ -208,7 +208,7 @@ body {
   }
   
   .confirm-btn:hover {
-    background-color: #21867a;
+    background-color: blue;
   }
   
   .cancel-btn:hover {

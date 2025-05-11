@@ -126,7 +126,7 @@ body {
 }
 
 h2 {
-  color: #2a9d8f;
+  color: blue;
 }
 
 label {
@@ -148,7 +148,7 @@ input[type="number"] {
 button {
   margin-top: 20px;
   padding: 12px 20px;
-  background: #2a9d8f;
+  background: blue;
   color: white;
   border: none;
   border-radius: 6px;
@@ -162,7 +162,7 @@ button {
 #generatedLink {
   width: 100%;
   padding: 10px;
-  border: 1px solid #2a9d8f;
+  border: 1px solid blue;
   border-radius: 6px;
   background: #f4fdfc;
 }
@@ -183,7 +183,7 @@ button {
 #btn-creer-examen {
   margin-top: 20px;
   padding: 12px 20px;
-  background: #2a9d8f;
+  background: blue;
   color: white;
   border: none;
   border-radius: 6px;

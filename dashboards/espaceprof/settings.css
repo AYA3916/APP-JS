@@ -127,13 +127,13 @@ body {
 }
 
 h2 {
-  color: #2a9d8f;
+  color: blue;
   margin-bottom: 20px;
   text-align: center;
 }
 
 h3 {
-  color: #2a9d8f;
+  color: blue;
   margin-top: 30px;
   display: flex;
   align-items: center;
@@ -164,7 +164,7 @@ select {
 button {
   margin-top: 20px;
   padding: 12px 20px;
-  background: #2a9d8f;
+  background: blue;
   color: white;
   border: none;
   border-radius: 6px;
@@ -172,11 +172,11 @@ button {
 }
 
 button:hover {
-  background: #21867a;
+  background: blue;
 }
 
 p {
   margin-top: 10px;
   font-size: 0.95em;
-  color: #2a9d8f;
+  color: blue;
 }
