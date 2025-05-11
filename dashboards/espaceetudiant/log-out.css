@@ -84,7 +84,7 @@ transform:scale(1.2);
   position: absolute;
   right: -10px;
   top: 24px;
-  background: #2a9d8f;
+  background: blue;
   height: 32px;
   width: 32px;
   border-radius: 50%;
@@ -128,7 +128,7 @@ body {
   }
   
   h1 {
-    color: #2a9d8f;
+    color: blue;
     margin-bottom: 20px;
   }
   
@@ -138,12 +138,11 @@ body {
     font-size: 1.2em;
   }
   
-  /* Log out button styles */
   .logout-btn {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #2a9d8f;
+    background-color: blue;
     color: white;
     padding: 12px 30px;
     border-radius: 6px;
@@ -158,7 +157,7 @@ body {
   }
   
   .logout-btn:hover {
-    background-color: #21867a;
+    background-color: blue;
     transform: scale(1.1);
   }
   
@@ -170,7 +169,6 @@ body {
     font-weight: bold;
   }
   
-  /* Confirmation message styles */
   .confirmation-message {
     display: none;
     margin-top: 20px;
@@ -182,7 +180,7 @@ body {
   }
   
   .confirmation-message p {
-    color: #2a9d8f;
+    color: blue;
     font-size: 1.1em;
   }
   
@@ -198,7 +196,7 @@ body {
   }
   
   .confirm-btn {
-    background-color: #2a9d8f;
+    background-color: blue;
     color: white;
   }
   
@@ -208,7 +206,7 @@ body {
   }
   
   .confirm-btn:hover {
-    background-color: #21867a;
+    background-color: blue;
   }
   
   .cancel-btn:hover {
@@ -217,7 +215,7 @@ body {
   
   .confirmation-message {
     background: #fff;
-    border: 1px solid #2a9d8f;
+    border: 1px solid blue;
     max-width: 400px;
     margin: 20px auto;
   }

@@ -84,7 +84,7 @@ transform:scale(1.2);
   position: absolute;
   right: -10px;
   top: 24px;
-  background: #2a9d8f;
+  background: blue;
   height: 32px;
   width: 32px;
   border-radius: 50%;
@@ -200,12 +200,12 @@ body {
     background-color: #2980b9;
   }
   
-  /* Style pour le bouton "+" */
+
 #btnCreateExam {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #28a745; /* Vert */
+  background-color: blue; 
   color: white;
   border: none;
   border-radius: 50%;
@@ -220,7 +220,7 @@ body {
 }
 
 #btnCreateExam:hover {
-  background-color: #218838;
+  background-color: blue;
 }
 .fade-in {
   animation: fadeIn 0.4s ease;
@@ -238,7 +238,7 @@ body {
 }
 
 .nouveau-lien {
-  color: green;
+  color: blue;
   font-weight: bold;
   margin-left: 10px;
 }
@@ -269,7 +269,7 @@ body {
 .copy-btn {
   padding: 5px 10px;
   font-size: 0.8rem;
-  background-color: #2ecc71;
+  background-color: blue;
   border: none;
   border-radius: 5px;
   color: white;
@@ -279,5 +279,5 @@ body {
 }
 
 .copy-btn:hover {
-  background-color: #27ae60;
+  background-color: blue;
 }
