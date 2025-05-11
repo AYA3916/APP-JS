@@ -1,3 +1,9 @@
+const sidebarContainer = document.querySelector(".sidebar-container");
+const detailsBtn = document.querySelector(".sidebar-container .details-btn");
+
+detailsBtn.addEventListener("click", () => {
+  sidebarContainer.classList.toggle("active");
+});
 let examen = JSON.parse(localStorage.getItem("examen_en_cours")); 
 let currentQuestionIndex = 0;
 let score = 0;
@@ -99,9 +105,4 @@ function validerReponse() {
 
 
 };
-const sidebarContainer = document.querySelector(".sidebar-container");
-const detailsBtn = document.querySelector(".sidebar-container .details-btn");
 
-detailsBtn.addEventListener("click", () => {
-  sidebarContainer.classList.toggle("active");
-});
