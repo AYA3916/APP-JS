@@ -42,7 +42,7 @@ router.post("/signin", async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(401).send("❌ Invalid email or password");
 
-    res.send("✅ Login successful");
+    res.status(200).json({ message: "✅ Login successful", role: user.role });
   } catch (err) {
     res.status(500).send("❌ Server error");
   }

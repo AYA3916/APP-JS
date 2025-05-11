@@ -147,7 +147,7 @@ body {
   position: absolute;
   right: -10px;
   top: 24px;
-  background: #2a9d8f;
+  background: blue;
   height: 32px;
   width: 32px;
   border-radius: 50%;
@@ -179,7 +179,6 @@ body {
   margin-left: 200px;
 }
   
-/* Style général */
 body {
     margin: 0;
     padding: 0;
@@ -192,7 +191,6 @@ body {
     justify-content: center;
   }
   
-  /* Conteneur principal */
   .result-container {
     background-color: #ffffffcc;
     padding: 40px;
@@ -204,22 +202,22 @@ body {
     animation: fadeIn 0.5s ease;
   }
   
-  /* Titre principal */
+  
   .result-container h1 {
     font-size: 2em;
     color: #333;
     margin-bottom: 20px;
   }
   
-  /* Score */
+  
   #score {
     font-size: 1.6em;
     font-weight: bold;
-    color: #4caf50;
+    color: blue;
     margin: 20px 0;
   }
   
-  /* Sections réponses */
+  
   #bonnes-reponses, #mauvaises-reponses {
     margin-top: 25px;
     width: 100%;
@@ -232,7 +230,6 @@ body {
     margin-bottom: 10px;
   }
   
-  /* Listes */
   .liste {
     list-style: none;
     padding: 0;
@@ -246,19 +243,16 @@ body {
     border-radius: 8px;
   }
   
-  /* Bonne réponse */
   #bonnes-reponses .liste div {
-    border-left-color: #4caf50;
+    border-left-color: blue;
     background-color: #e8f5e9;
   }
   
-  /* Mauvaise réponse */
   #mauvaises-reponses .liste div {
     border-left-color: #f44336;
     background-color: #fdecea;
   }
   
-  /* Badges de fin */
   #badge-reussite,
   #badge-echec {
     margin-top: 30px;
@@ -271,7 +265,7 @@ body {
   }
   
   #badge-reussite {
-    background-color: #4caf50;
+    background-color: blue;
     color: white;
   }
   
@@ -284,7 +278,6 @@ body {
     display: none;
   }
   
-  /* Animations */
   @keyframes fadeIn {
     from {
       opacity: 0;

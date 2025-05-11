@@ -84,7 +84,7 @@ transform:scale(1.2);
   position: absolute;
   right: -10px;
   top: 24px;
-  background: #2a9d8f;
+  background: blue;
   height: 32px;
   width: 32px;
   border-radius: 50%;
@@ -107,7 +107,6 @@ transform:scale(1.2);
   font-size: 20px;
 }
 
-/* General settings styling */
 body {
   font-family: Arial, sans-serif;
   padding: 20px;

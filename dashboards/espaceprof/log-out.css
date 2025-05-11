@@ -170,7 +170,6 @@ body {
     font-weight: bold;
   }
   
-  /* Confirmation message styles */
   .confirmation-message {
     display: none;
     margin-top: 20px;

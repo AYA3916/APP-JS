@@ -67,8 +67,22 @@ signInForm.addEventListener("submit", async (e) => {
       body: JSON.stringify({ email, password })
     });
 
-    const result = await response.text();
-    alert(result);
+    const data = await response.json();
+
+    if (response.ok) {
+      alert(data.message);
+      
+      // Redirect based on role
+      if (data.role === "student") {
+        window.location.href = "http://127.0.0.1:5501/dashboards/espaceetudiant/afiexam.html";
+      } else if (data.role === "professor") {
+        window.location.href = "http://127.0.0.1:5501/dashboards/espaceprof/affich.html";
+      } else {
+        alert("Unknown role: " + data.role);
+      }
+    } else {
+      alert(data); // server may return plain text on error
+    }
   } catch (err) {
     alert("Error during sign in: " + err.message);
   }
