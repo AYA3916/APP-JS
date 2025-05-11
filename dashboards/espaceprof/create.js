@@ -1,3 +1,9 @@
+const sidebarContainer = document.querySelector(".sidebar-container");
+const detailsBtn = document.querySelector(".sidebar-container .details-btn");
+
+detailsBtn.addEventListener("click", () => {
+  sidebarContainer.classList.toggle("active");
+});
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("examForm");
   const addQuestionBtn = document.getElementById("btn-ajouter-question");
@@ -127,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem(idUnique, JSON.stringify(examen));
 
     // ✅ Générer un lien d'accès unique
-    const examenLink = `${window.location.origin}/afiexam.html?id=${idUnique}`;
+    const examenLink = `${window.location.origin}../dashboards/espaceetudiant/afiexam.html?id=${idUnique}`;
     generatedLinkInput.value = examenLink;  // Afficher le lien généré
 
     // ✅ Afficher le lien et le rendre visible

@@ -1,3 +1,112 @@
+.body {
+  margin: 0;
+}
+
+.sidebar-container {
+  background: #000;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 80px;
+  box-shadow: 4px 0 24px -8px rgba(0, 0, 0, 0.7);
+  transition: all 500ms ease;
+}
+
+.sidebar-container.active {
+  width: 200px;
+}
+
+.sidebar-container .details-btn i {
+  transition: all 300ms ease;
+}
+
+.sidebar-container.active .details-btn i {
+  transform: rotateZ(180deg);
+}
+
+.sidebar-container i {
+  color: #eee;
+  font-size: 30px;
+}
+
+.sidebar-container .menu-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  gap: 42px;
+}
+
+.sidebar-container .menu-item {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  padding: 6px 16px;
+  transition: all 300ms ease;
+}
+
+.sidebar-container.active .menu-item:hover {
+  background: #0f1d25;
+}
+
+.sidebar-container .menu-item .details {
+  margin-left: 24px;
+  font-size: 18px;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 300ms ease;
+}
+
+.sidebar-container.active .menu-item .details {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sidebar-container.active .menu-item .details:hover {
+transform:scale(1.2);
+}
+
+.sidebar-container .menu-item i {
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 300ms ease;
+}
+
+.sidebar-container .menu-item i:hover {
+  transform: scale(1.2);
+  background: #0f1d25;
+}
+
+.sidebar-container .details-btn {
+  position: absolute;
+  right: -10px;
+  top: 24px;
+  background: #2a9d8f;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 300ms ease;
+
+  animation: detailsAnimation 500ms infinite alternate;
+}
+
+@keyframes detailsAnimation {
+  100% {
+    transform: translateX(4px);
+  }
+}
+
+.sidebar-container .details-btn i {
+  font-size: 20px;
+}
+
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
@@ -126,4 +235,49 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.nouveau-lien {
+  color: green;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.lien-examen-complet {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #eef6ff;
+  border: 1px solid #b0d4f1;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-top: 1rem;
+  word-break: break-all;
+  font-size: 0.9rem;
+}
+
+.lien-examen-complet a {
+  color: #1a73e8;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.lien-examen-complet a:hover {
+  color: #0c56c2;
+}
+
+.copy-btn {
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  background-color: #2ecc71;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-top: 10px;
+}
+
+.copy-btn:hover {
+  background-color: #27ae60;
 }
