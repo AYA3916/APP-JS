@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const bonnesListe = document.querySelector("#bonnes-reponses .liste");
     const mauvaisesListe = document.querySelector("#mauvaises-reponses .liste");
   
-    // Récupérer les résultats depuis le localStorage
     const resultats = JSON.parse(localStorage.getItem("resultat_examen"));
   
     if (!resultats || !Array.isArray(resultats.reponses)) {
