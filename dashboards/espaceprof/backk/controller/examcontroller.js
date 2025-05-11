@@ -1,6 +1,5 @@
 const Exam = require('../models/Exam');
 
-// Créer un examen
 exports.createExam = async (req, res) => {
   try {
     const { titre, description, filiere, semestre, questions } = req.body;
@@ -24,7 +23,6 @@ exports.createExam = async (req, res) => {
   }
 };
 
-// Récupérer tous les examens d'un professeur
 exports.getExamsByProfessor = async (req, res) => {
   try {
     const exams = await Exam.find({ professeur: req.userId })
@@ -37,12 +35,10 @@ exports.getExamsByProfessor = async (req, res) => {
   }
 };
 
-// Supprimer un examen
 exports.deleteExam = async (req, res) => {
   try {
     const { id } = req.params;
     
-    // Vérifier que l'examen appartient bien au professeur
     const exam = await Exam.findOneAndDelete({
       _id: id,
       professeur: req.userId

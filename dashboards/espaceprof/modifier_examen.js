@@ -46,7 +46,6 @@ function createQuestionElement(question) {
   const propositionsList = div.querySelector(".propositions-list");
   const btnAjouterProp = div.querySelector(".btn-ajouter-proposition");
 
-  // Fonction d'ajout de proposition (QCM)
   function ajouterProposition(val = "", estBonne = false) {
     const propDiv = document.createElement("div");
     propDiv.className = "proposition-item";
@@ -61,7 +60,6 @@ function createQuestionElement(question) {
     propositionsList.appendChild(propDiv);
   }
 
-  // Chargement des propositions existantes (QCM)
   if (question.type === "qcm") {
     (question.propositions || []).forEach(p => {
       ajouterProposition(p, p === question.bonneReponse);

@@ -1,4 +1,3 @@
-// Gérer l'ouverture/fermeture de la sidebar
 const sidebarContainer = document.querySelector(".sidebar-container");
 const detailsBtn = document.querySelector(".sidebar-container .details-btn");
 

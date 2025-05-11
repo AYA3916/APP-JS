@@ -1,4 +1,4 @@
-let examen = JSON.parse(localStorage.getItem("examen_en_cours")); // récupère l'examen en cours
+let examen = JSON.parse(localStorage.getItem("examen_en_cours")); 
 let currentQuestionIndex = 0;
 let score = 0;
 let reponsesCorrectes = [];
@@ -9,7 +9,6 @@ const examContainer = document.querySelector(".exam-container");
 const nextBtn = document.getElementById("next-btn");
 const timerDisplay = document.getElementById("timer");
 
-// Lance le premier affichage
 afficherQuestion();
 
 function afficherQuestion() {
@@ -18,13 +17,11 @@ function afficherQuestion() {
   void examContainer.offsetWidth; // Hack pour relancer l'animation
   examContainer.classList.add("fade-in");
 
-  // Affichage de l'énoncé
   examContainer.innerHTML = `
     <h2>Question ${currentQuestionIndex + 1} : ${question.enonce}</h2>
     <div id="timer"></div>
   `;
 
-  // Réponse QCM
   if (question.type === "qcm") {
     question.propositions.forEach((prop, index) => {
       const label = document.createElement("label");
@@ -35,7 +32,6 @@ function afficherQuestion() {
       examContainer.appendChild(label);
     });
   } 
-  // Réponse directe
   else {
     const input = document.createElement("input");
     input.type = "text";
@@ -44,11 +40,9 @@ function afficherQuestion() {
     examContainer.appendChild(input);
   }
 
-  // Bouton suivant
   examContainer.appendChild(nextBtn);
   nextBtn.disabled = false;
 
-  // Lancer le timer
   lancerTimer(question.duree);
 }
 

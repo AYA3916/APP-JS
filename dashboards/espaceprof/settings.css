@@ -140,8 +140,8 @@ h3 {
 }
 
 h3 i {
-  margin-right: 10px; /* Espacement entre l'icône et le texte */
-  font-size: 1.3em;  /* Taille des icônes */
+  margin-right: 10px; 
+  font-size: 1.3em;  
 }
 
 label {
