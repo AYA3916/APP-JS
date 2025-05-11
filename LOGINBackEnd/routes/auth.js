@@ -1,26 +1,54 @@
-// routes/auth.js
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 
+// 🔐 SIGN UP Route
 router.post("/signup", async (req, res) => {
+  const { fullName, email, password, birthday, gender, university, filiere } = req.body;
+
   try {
-    const newUser = new User(req.body);
+    // Check if user already exists
+    const existingUser = await User.findOne({ email });
+    if (existingUser) return res.status(400).send("❌ User already exists");
+
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Create new user
+    const newUser = new User({
+      fullName,
+      email,
+      password: hashedPassword,
+      birthday,
+      gender,
+      university,
+      filiere
+    });
+
     await newUser.save();
-    res.status(201).send("User registered successfully");
+    res.status(201).send("✅ User registered successfully");
   } catch (err) {
-    res.status(400).send("Error: " + err.message);
+    res.status(400).send("❌ Error: " + err.message);
   }
 });
 
+// 🔓 SIGN IN Route
 router.post("/signin", async (req, res) => {
   const { email, password } = req.body;
-  const user = await User.findOne({ email, password });
 
-  if (user) {
-    res.send("Login successful");
-  } else {
-    res.status(401).send("Invalid credentials");
+  try {
+    // Find user by email
+    const user = await User.findOne({ email });
+    if (!user) return res.status(401).send("❌ Invalid email or password");
+
+    // Compare hashed passwords
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) return res.status(401).send("❌ Invalid email or password");
+
+    res.send("✅ Login successful");
+  } catch (err) {
+    res.status(500).send("❌ Server error");
   }
 });
 
