@@ -16,7 +16,7 @@ document.getElementById("logoutBtn").addEventListener("click", function (e) {
     localStorage.clear();
     
     // Rediriger vers la page de connexion
-    window.location.href = "/APP-JS/LOGIN/login.html";
+    window.location.href = "../../LOGIN/login.html";
   });
   
   document.getElementById("cancelLogout").addEventListener("click", function () {
