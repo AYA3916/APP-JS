@@ -23,7 +23,8 @@ router.post("/signup", async (req, res) => {
       birthday,
       gender,
       university,
-      filiere
+      filiere,
+      role
     });
 
     await newUser.save();
@@ -32,6 +33,20 @@ router.post("/signup", async (req, res) => {
     res.status(400).send("❌ Error: " + err.message);
   }
 });
+
+
+const result = await res.text();
+alert(result);
+
+if (res.ok) {
+  // Redirect based on role
+  if (role === "student") {
+    window.location.href = "student.html";
+  } else if (role === "professor") {
+    window.location.href = "prof.html";
+  }
+}
+
 
 // 🔓 SIGN IN Route
 router.post("/signin", async (req, res) => {

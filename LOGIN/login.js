@@ -25,6 +25,8 @@ signUpForm.addEventListener("submit", async (e) => {
   const gender = signUpForm.querySelector("#gender").value;
   const university = signUpForm.querySelector("#university").value;
   const filiere = signUpForm.querySelector("#filiere").value;
+  const role = signUpForm.querySelector("#role").value;
+
 
   const userData = {
     fullName,
@@ -33,7 +35,8 @@ signUpForm.addEventListener("submit", async (e) => {
     birthday,
     gender,
     university,
-    filiere
+    filiere,
+    role
   };
 
   try {
