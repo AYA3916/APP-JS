@@ -147,8 +147,14 @@
     margin-bottom: 20px;
   }
 
-
+  h1.create{
+    margin-left: 20px;
+  }
   
+  h1.sign{
+    margin-left: 90px;
+  }
+
   .social-icons {
     display: flex;
     justify-content: center;
@@ -170,3 +176,9 @@
     width: 100%;
     max-width: 300px;
   }
+button.sign-in{
+  margin-left: 75px;
+}
+button.sign-up{
+  margin-left:-60px;
+}
