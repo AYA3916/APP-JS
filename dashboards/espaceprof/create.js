@@ -82,69 +82,71 @@ document.addEventListener("DOMContentLoaded", function () {
     questionsContainer.appendChild(questionDiv);
   });
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
+  form.addEventListener("submit", async function (e) {
+  e.preventDefault();
 
-    // ✅ Vérifier qu’au moins une question a été ajoutée
-    const questionElements = document.querySelectorAll(".question");
-    if (questionElements.length === 0) {
-      alert("Veuillez ajouter au moins une question avant de créer l'examen.");
-      return;
+  const questionElements = document.querySelectorAll(".question");
+  if (questionElements.length === 0) {
+    alert("Veuillez ajouter au moins une question avant de créer l'examen.");
+    return;
+  }
+
+  const examen = {
+    titre: document.getElementById("titre").value,
+    description: document.getElementById("description").value,
+    filiere: document.getElementById("filiere").value,
+    semestre: document.getElementById("semestre").value,
+    questions: [],
+  };
+
+  questionElements.forEach((questionDiv) => {
+    const type = questionDiv.querySelector("select").value;
+    const enonce = questionDiv.querySelector("textarea").value;
+    const inputs = questionDiv.querySelectorAll("input[type='number']");
+    const duration = inputs[0]?.value || 0;
+    const points = inputs[1]?.value || 0;
+
+    let question = { type, enonce, duration, points };
+
+    if (type === "directe") {
+      const reponse = questionDiv.querySelector("input[type='text']").value;
+      question.reponse = reponse;
+    } else if (type === "qcm") {
+      const propositions = [];
+      questionDiv.querySelectorAll(".proposition").forEach((propDiv) => {
+        const text = propDiv.querySelector(".prop-text").value;
+        const correct = propDiv.querySelector(".prop-correct").checked;
+        propositions.push({
+          proposition: text,
+          correcte: correct,
+        });
+      });
+      question.propositions = propositions;
     }
 
-    const examen = {
-      titre: document.getElementById("titre").value,
-      description: document.getElementById("description").value,
-      filiere: document.getElementById("filiere").value,
-      semestre: document.getElementById("semestre").value,
-      questions: [],
-    };
-
-    questionElements.forEach((questionDiv) => {
-      const type = questionDiv.querySelector("select").value;
-      const enonce = questionDiv.querySelector("textarea").value;
-      const inputs = questionDiv.querySelectorAll("input[type='number']");
-      const duration = inputs[0]?.value || 0;
-      const points = inputs[1]?.value || 0;
-
-      let question = { type, enonce, duration, points };
-
-      if (type === "directe") {
-        const reponse = questionDiv.querySelector("input[type='text']").value;
-        question.reponse = reponse;
-      } else if (type === "qcm") {
-        const propositions = [];
-        questionDiv.querySelectorAll(".proposition").forEach((propDiv) => {
-          const text = propDiv.querySelector(".prop-text").value;
-          const correct = propDiv.querySelector(".prop-correct").checked;
-          propositions.push({
-            proposition: text,
-            correcte: correct,
-          });
-        });
-        question.propositions = propositions;
-      }
-
-      examen.questions.push(question);
-    });
-
-    // ✅ Enregistrement de l'examen
-    const idUnique = "examen_" + Date.now(); // Créer un ID unique
-    localStorage.setItem(idUnique, JSON.stringify(examen));
-
-    // ✅ Générer un lien d'accès unique
-    const examenLink = `${window.location.origin}../dashboards/espaceetudiant/afiexam.html?id=${idUnique}`;
-    generatedLinkInput.value = examenLink;  // Afficher le lien généré
-
-    // ✅ Afficher le lien et le rendre visible
-    lienExamenDiv.classList.remove("hidden");
-
-    // ✅ Afficher un message de confirmation
-    alert("Examen créé avec succès !");
-
-    // ✅ Rediriger vers la page des examens créés après un délai
-    setTimeout(() => {
-      window.location.href = "affich.html"; // Remplace par le chemin de la page qui affiche les examens créés
-    }, 10000);  // Attendre 2 secondes avant la redirection
+    examen.questions.push(question);
   });
+
+  try {
+    const response = await fetch('http://localhost:5000/api/exams', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(examen)
+    });
+    
+    const data = await response.json();
+    const examenLink = `${window.location.origin}/exam_etudiant.html?id=${data.examId}`;
+    generatedLinkInput.value = examenLink;
+    lienExamenDiv.classList.remove("hidden");
+    alert("Examen créé avec succès !");
+    setTimeout(() => {
+      window.location.href = "affich.html";
+    }, 2000);
+  } catch (err) {
+    console.error("Erreur:", err);
+    alert("Erreur lors de la création de l'examen");
+  }
+});
 });
